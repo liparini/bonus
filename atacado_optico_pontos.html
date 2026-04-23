@@ -1,0 +1,140 @@
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:transparent}
+.wrap{font-family:'DM Sans',sans-serif;background:linear-gradient(135deg,#0a1628 0%,#0f2347 50%,#0a1628 100%);border-radius:16px;padding:0;overflow:hidden;position:relative;min-height:100vh}
+.hero{padding:52px 40px 36px;text-align:center;position:relative;z-index:2}
+.logo-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,200,50,0.12);border:1px solid rgba(255,200,50,0.35);border-radius:100px;padding:6px 18px;margin-bottom:24px}
+.logo-badge span{color:#ffc832;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.hero h1{font-family:'Playfair Display',serif;color:#fff;font-size:42px;font-weight:900;line-height:1.1;margin-bottom:12px}
+.hero h1 em{color:#ffc832;font-style:normal}
+.hero p{color:rgba(255,255,255,0.6);font-size:16px;max-width:480px;margin:0 auto}
+.stars{display:flex;justify-content:center;gap:4px;margin-top:8px}
+.star{color:#ffc832;font-size:18px}
+.cards-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:0 32px 32px;position:relative;z-index:2}
+.card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:24px;position:relative;overflow:hidden;transition:transform .2s}
+.card:hover{transform:translateY(-3px)}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.card.gold::before{background:linear-gradient(90deg,#ffc832,#ff9f0a)}
+.card.teal::before{background:linear-gradient(90deg,#00d4aa,#00a8cc)}
+.card.blue::before{background:linear-gradient(90deg,#4a9eff,#7c5cfc)}
+.card.green::before{background:linear-gradient(90deg,#32d74b,#00d4aa)}
+.card.purple::before{background:linear-gradient(90deg,#bf5af2,#4a9eff)}
+.card-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px}
+.icon-gold{background:rgba(255,200,50,0.15)}
+.icon-teal{background:rgba(0,212,170,0.15)}
+.icon-blue{background:rgba(74,158,255,0.15)}
+.icon-green{background:rgba(50,215,75,0.15)}
+.icon-purple{background:rgba(191,90,242,0.15)}
+.card h3{color:#fff;font-size:15px;font-weight:600;margin-bottom:6px}
+.card p{color:rgba(255,255,255,0.55);font-size:13px;line-height:1.5}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:100px;padding:5px 14px;font-size:13px;font-weight:600;margin-top:12px}
+.pill-gold{background:rgba(255,200,50,0.18);color:#ffc832;border:1px solid rgba(255,200,50,0.3)}
+.pill-teal{background:rgba(0,212,170,0.15);color:#00d4aa;border:1px solid rgba(0,212,170,0.25)}
+.pill-blue{background:rgba(74,158,255,0.15);color:#4a9eff;border:1px solid rgba(74,158,255,0.25)}
+.pill-green{background:rgba(50,215,75,0.15);color:#32d74b;border:1px solid rgba(50,215,75,0.25)}
+.pill-purple{background:rgba(191,90,242,0.15);color:#bf5af2;border:1px solid rgba(191,90,242,0.25)}
+.bonus-bar{margin:0 32px 32px;background:linear-gradient(135deg,rgba(255,200,50,0.12),rgba(255,160,0,0.08));border:1px solid rgba(255,200,50,0.3);border-radius:14px;padding:24px 28px;display:flex;align-items:center;gap:20px;position:relative;z-index:2}
+.bonus-icon{width:56px;height:56px;min-width:56px;border-radius:14px;background:rgba(255,200,50,0.15);display:flex;align-items:center;justify-content:center;font-size:28px}
+.bonus-text h3{color:#ffc832;font-size:17px;font-weight:600;margin-bottom:4px}
+.bonus-text p{color:rgba(255,255,255,0.6);font-size:13px;line-height:1.5}
+.bonus-amount{margin-left:auto;text-align:center}
+.bonus-amount strong{display:block;font-family:'Playfair Display',serif;color:#ffc832;font-size:32px;font-weight:900;line-height:1}
+.bonus-amount span{color:rgba(255,255,255,0.45);font-size:12px}
+.footer{padding:0 32px 36px;display:flex;gap:12px;position:relative;z-index:2}
+.stat-box{flex:1;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:12px;padding:16px;text-align:center}
+.stat-box strong{display:block;font-family:'Playfair Display',serif;color:#fff;font-size:24px;font-weight:700}
+.stat-box span{color:rgba(255,255,255,0.4);font-size:12px;margin-top:2px;display:block}
+.deco{position:absolute;border-radius:50%;filter:blur(60px);pointer-events:none}
+.deco1{width:300px;height:300px;background:rgba(255,200,50,0.04);top:-80px;right:-60px}
+.deco2{width:250px;height:250px;background:rgba(74,158,255,0.05);bottom:100px;left:-80px}
+.tag-full{background:rgba(0,212,170,0.12);color:#00d4aa;border:1px solid rgba(0,212,170,0.25);border-radius:6px;font-size:11px;font-weight:600;padding:2px 8px;display:inline-block;margin-right:6px}
+.tag-neg{background:rgba(74,158,255,0.12);color:#4a9eff;border:1px solid rgba(74,158,255,0.25);border-radius:6px;font-size:11px;font-weight:600;padding:2px 8px;display:inline-block}
+.wide{grid-column:1/-1}
+.divider{height:1px;background:rgba(255,255,255,0.07);margin:0 32px 24px}
+</style>
+
+<div class="wrap">
+  <div class="deco deco1"></div>
+  <div class="deco deco2"></div>
+
+  <div class="hero">
+    <div class="logo-badge"><span>&#9733; Programa de Pontos</span></div>
+    <h1>Ganhe com <em>Atacado Óptico</em></h1>
+    <p>Cada venda, avaliação e cliente recuperado vira ponto. Confira como maximizar seus ganhos.</p>
+    <div class="stars">
+      <span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span><span class="star">&#9733;</span>
+    </div>
+  </div>
+
+  <div class="cards-grid">
+    <div class="card gold">
+      <div class="card-icon icon-gold">&#11088;</div>
+      <h3>Avaliação no Google</h3>
+      <p>Solicite uma avaliação positiva de 5 estrelas para seu cliente no Google. Simples e rápido.</p>
+      <div class="pill pill-gold">+10 pontos por avaliação</div>
+    </div>
+
+    <div class="card teal">
+      <div class="card-icon icon-teal">&#128200;</div>
+      <h3>Venda — Tabela Cheia</h3>
+      <p>Cada real vendido no preço cheio vale 1 ponto inteiro. Quanto mais você vende, mais você ganha.</p>
+      <div class="pill pill-teal">1 ponto / R$ 1,00</div>
+    </div>
+
+    <div class="card blue">
+      <div class="card-icon icon-blue">&#128203;</div>
+      <h3>Venda — Tabela Negociada</h3>
+      <p>Vendas com desconto também pontuam. <span class="tag-full">Tabela Cheia</span> rende 10x mais que <span class="tag-neg">Negociada</span>.</p>
+      <div class="pill pill-blue">0,10 ponto / R$ 1,00</div>
+    </div>
+
+    <div class="card green">
+      <div class="card-icon icon-green">&#128101;</div>
+      <h3>Recuperação de Clientes</h3>
+      <p>Trouxe de volta um cliente inativo? Ganhe 5% do valor da primeira venda em pontos automaticamente.</p>
+      <div class="pill pill-green">5% na 1ª venda</div>
+    </div>
+
+    <div class="card purple wide">
+      <div class="card-icon icon-purple">&#128176;</div>
+      <h3>Recuperação de Inadimplentes</h3>
+      <p>Regularizou um cliente com débitos em aberto? Você recebe pontos equivalentes a 0,5% do valor recuperado — toda quitação conta.</p>
+      <div class="pill pill-purple">0,5% do valor recuperado</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="bonus-bar">
+    <div class="bonus-icon">&#127942;</div>
+    <div class="bonus-text">
+      <h3>Bônus de 1º Lugar</h3>
+      <p>Líder do ranking recebe um prêmio em dinheiro além de todos os pontos acumulados no período. Dispute e vença!</p>
+    </div>
+    <div class="bonus-amount">
+      <strong>R$ 100</strong>
+      <span>bônus extra</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="stat-box">
+      <strong>10 pts</strong>
+      <span>por avaliação</span>
+    </div>
+    <div class="stat-box">
+      <strong>1 pt</strong>
+      <span>por R$1 cheio</span>
+    </div>
+    <div class="stat-box">
+      <strong>5%</strong>
+      <span>recuperação</span>
+    </div>
+    <div class="stat-box">
+      <strong>R$100</strong>
+      <span>bônus 1º lugar</span>
+    </div>
+  </div>
+</div>
